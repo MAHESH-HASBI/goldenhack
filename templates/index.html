@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Matcher</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        #result p {
+            background-color: #e9f7ef;
+            padding: 10px;
+            border-left: 5px solid #4CAF50;
+        }
+
+        h2 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Job Matcher</h1>
+    </header>
+    <main>
+        <section id="user-info">
+            <h2>User Information</h2>
+            <form action="/submit" method="post">
+                <label for="user-name">Name:</label>
+                <input type="text" id="user-name" name="user-name">
+            </form>
+            <section>
+                <h2>Upload Your Resume</h2>
+                <form action="/submit" method="post" enctype="multipart/form-data">
+                    <input type="file" name="resume" accept=".pdf">
+                <br><p></p>
+                    <label for="job-desc">Paste Job Description:</label><br>
+                    <textarea id="job-desc" name="job-desc"></textarea><br>
+                    <button type="submit">Check Eligibility</button>
+                </form>
+            </section>
+        </section>
+
+        <section id="result">
+            <h2>Result</h2>
+            <p id="eligibility-result">{{ chat_response }}</p> <!-- Jinja template variable -->
+        </section>
+    </main>
+</body>
+
+</html>
